@@ -99,6 +99,146 @@ body {
   border-radius: 50%;
   z-index: 100;
 }
+/* ...existing code above... */
+
+/* Card Slider Section */
+.card-slider-container {
+  position: relative;
+  margin: 60px auto 0 auto;
+  padding: 40px 0;
+  background: #f7f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.card-slider {
+  display: flex;
+  gap: 30px;
+  transition: transform 1s cubic-bezier(.77,0,.18,1);
+  will-change: transform;
+}
+
+.card {
+  min-width: 350px;
+  max-width: 350px;
+  height: 500px;
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  transition: min-width 0.3s, max-width 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.card:hover {
+  min-width: 380px;
+  max-width: 380px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  transform: scale(1.03);
+  z-index: 1;
+}
+
+.card img {
+  width: 100%;
+  height: 70%;
+  object-fit: fill; /* Fill the area, may distort image */
+  border-radius: 24px 24px 0 0;
+  display: block;
+}
+
+.card-content {
+  padding: 24px 16px 16px 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 60%, transparent 100%);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.card-content h3 {
+  color: #fff;
+  margin: 0 0 12px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.explore-btn {
+  background: #b71c1c;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card:hover .explore-btn,
+.explore-btn:hover {
+  background: #d02265;
+}
+
+.card-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  color: #333;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card-nav.prev { left: 10px; }
+.card-nav.next { right: 10px; }
+
+@media (max-width: 1200px) {
+  .card-slider-container {
+    min-height: 420px;
+  }
+  .card {
+    min-width: 260px;
+    max-width: 260px;
+    height: 350px;
+  }
+  .card:hover {
+    min-width: 280px;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 700px) {
+  .card-slider-container {
+    min-height: 320px;
+    padding: 20px 0;
+  }
+  .card {
+    min-width: 180px;
+    max-width: 180px;
+    height: 220px;
+  }
+  .card:hover {
+    min-width: 200px;
+    max-width: 200px;
+  }
+  .card-content h3 {
+    font-size: 1rem;
+  }
+  .explore-btn {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+  }
+}
 
 a {
   text-decoration: none; /* remove underline */
@@ -153,16 +293,6 @@ a {
   justify-content: space-between;
   align-items: center;
 }
-
-/* Special navbar only for services.html */
-.services-page .navbar {
-  justify-content: center;
-}
-
-.services-page .logo {
-  position: absolute;
-  left: 30px;
-}
 .kerala-intro {
   padding: 50px 20px;
   background-color: #f9f9f9;
@@ -212,7 +342,6 @@ a {
   position: relative;
   display: inline-block;
 }
-
 .dropbtn {
   background: none;
   border: none;
@@ -252,4 +381,3 @@ a {
 
 .language-dropdown:hover .dropdown-content {
   display: block;
-}

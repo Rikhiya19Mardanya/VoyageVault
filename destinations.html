@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kerala Destinations | VoyageVault</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #f0f0f8;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #f8a1d1, #cbb4f5);
+      color: #fff;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      font-weight: 800;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      max-width: 1200px;
+      margin: 50px auto;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #f9e2ff, #d9f3ff);
+      border-radius: 25px;
+      padding: 25px;
+      flex: 1 1 260px;
+      max-width: 280px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      background: linear-gradient(145deg, #ffd1dc, #a0e7ff);
+    }
+
+    .card h3 {
+      margin: 0 0 12px 0;
+      color: #5c3d6e;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .card p {
+      flex-grow: 1;
+      line-height: 1.5;
+      color: #4b3f51;
+      margin-bottom: 15px;
+    }
+
+    .card button {
+      padding: 12px 20px;
+      background: linear-gradient(90deg, #ff8cf0, #62d4ff);
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .card button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #ff62e8, #38c0ff);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #f7f0ff;
+      color: #5c3d6e;
+      font-size: 0.95rem;
+      margin-top: 50px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+    }
+
+    @media(max-width:768px){
+      .card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Explore Kerala Destinations</h1>
+  <p>Discover the coolest spots across Kerala for your next adventure!</p>
+</header>
+
+<div class="cards-container">
+  <div class="card">
+    <h3>Munnar</h3>
+    <p>Rolling tea gardens, misty hills, and cozy vibes perfect for insta-worthy photos.</p>
+    <button onclick="location.href='munnar.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Alleppey</h3>
+    <p>Backwaters, houseboats, and chill water vibes for a magical trip.</p>
+    <button onclick="location.href='alleppey.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Kovalam</h3>
+    <p>Sun-kissed beaches with palm-fringed shores and relaxing vibes.</p>
+    <button onclick="location.href='kovalam.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Fort Kochi</h3>
+    <p>Colonial charm, street art, and cozy cafes in a historic setting.</p>
+    <button onclick="location.href='fortkochi.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Wayanad</h3>
+    <p>Lush trekking trails, waterfalls, and serene nature getaways.</p>
+    <button onclick="location.href='wayanad.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Athirappilly</h3>
+    <p>Majestic waterfalls and rainforest vibes for adventure lovers.</p>
+    <button onclick="location.href='athirappilly.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Varkala</h3>
+    <p>Cliffside beaches with chilled-out sunsets and a boho feel.</p>
+    <button onclick="location.href='varkala.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Periyar</h3>
+    <p>Wildlife sanctuary adventures and peaceful lake moments.</p>
+    <button onclick="location.href='periyar.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Thekkady</h3>
+    <p>Spice plantations, jungle safaris, and eco-friendly exploration.</p>
+    <button onclick="location.href='thekkady.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Kumarakom</h3>
+    <p>Backwater vibes, bird sanctuary trips, and tranquil sunsets.</p>
+    <button onclick="location.href='kumarakom.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Bekal</h3>
+    <p>Historic forts, sandy beaches, and a northern Kerala adventure.</p>
+    <button onclick="location.href='bekal.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Marari Beach</h3>
+    <p>Quiet beaches with tropical vibes and relaxed weekends.</p>
+    <button onclick="location.href='marari.html'">Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Silent Valley</h3>
+    <p>Untouched rainforest for trekkers and eco-adventurers.</p>
+    <button onclick="location.href='silentvalley.html'">Read More</button>
+  </div>
+</div>
+
+<footer>
+  © 2025 VoyageVault | Explore the Wonders of Kerala
+</footer>
+
+</body>
+</html>

@@ -3,29 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoyageVault</title>
-  <link rel="stylesheet" href="style.css">
+  <title>VoyageVault | Services</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #ffefba, #ffffff);
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      background: #b71c1c;
+      color: #fff;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Services container */
+    .services-container {
+      max-width: 1000px;
+      margin: 50px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    /* Service card */
+    .service-card {
+      background: rgba(255,255,255,0.8);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 12px 25px rgba(183,28,28,0.3);
+      background: linear-gradient(135deg, #b71c1c, #d32f2f);
+      color: #fff;
+    }
+
+    .service-card i {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover i {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .service-card h2 {
+      margin: 10px 0;
+      font-size: 1.5rem;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover p {
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #17252a;
+      color: #fff;
+      font-size: 0.95rem;
+      margin-top: 50px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      opacity: 0.9;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">Services</div>
-    <nav>
-      <ul class="menu">
-        <li>At a Glance <i class="fa-solid fa-caret-down"></i></li>
-        <li>Accomodation <i class="fa-solid fa-caret-down"></i></li>
-        <li>Weather Forecast <i class="fa-solid fa-caret-down"></i></li>
-        <li>News <i class="fa-solid fa-caret-down"></i></li>
-      </ul>
-    </nav>
-    <div class="icons">
-      <span>EN <i class="fa-solid fa-caret-down"></i></span>
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <i class="fa-regular fa-user"></i>
-      <i class="fa-regular fa-heart"></i>
-      <i class="fa-solid fa-bars"></i>
-    </div>
-  </header>
+
+<header>
+  <h1>VoyageVault Services</h1>
+  <p>Explore our services for your perfect Kerala trip</p>
+</header>
+
+<div class="services-container">
+  <!-- At a Glance -->
+  <div class="service-card" onclick="window.location.href='ataglance.html'">
+    <i class="fa-solid fa-globe"></i>
+    <h2>At a Glance</h2>
+    <p>Get a quick overview of Kerala’s top attractions and highlights.</p>
+  </div>
+
+  <!-- Accommodation -->
+  <div class="service-card" onclick="window.location.href='accomodations.html'">
+    <i class="fa-solid fa-hotel"></i>
+    <h2>Accommodation</h2>
+    <p>Find the best stays, from luxury resorts to cozy homestays.</p>
+  </div>
+
+  <!-- Weather Forecast -->
+  <div class="service-card" onclick="window.location.href='weather.html'">
+    <i class="fa-solid fa-cloud-sun"></i>
+    <h2>Weather Forecast</h2>
+    <p>Check the latest weather updates to plan your trips efficiently.</p>
+  </div>
+
+  <!-- News -->
+  <div class="service-card" onclick="window.location.href='news.html'">
+    <i class="fa-solid fa-newspaper"></i>
+    <h2>News</h2>
+    <p>Stay updated with local events, festivals, and travel news.</p>
+  </div>
+</div>
+
+<footer>
+  © 2025 VoyageVault | Crafted with ❤️ for Travelers
+</footer>
+
 </body>
 </html>
