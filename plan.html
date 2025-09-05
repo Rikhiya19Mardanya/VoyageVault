@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kerala Trip Planner | VoyageVault</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      color: #fff;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .planner-container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .planner-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .planner-form label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .planner-form select, 
+    .planner-form input, 
+    .planner-form textarea {
+      padding: 12px 15px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .planner-form select:focus,
+    .planner-form input:focus,
+    .planner-form textarea:focus {
+      outline: none;
+      border-color: #ff6f61;
+      box-shadow: 0 0 10px rgba(255,111,97,0.3);
+    }
+
+    .planner-form button {
+      padding: 12px 20px;
+      background: #ff6f61;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .planner-form button:hover {
+      background: #ff3b2f;
+    }
+
+    .itinerary-container {
+      margin-top: 30px;
+    }
+
+    .itinerary-card {
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      color: #fff;
+    }
+
+    .itinerary-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(255,111,97,0.25);
+    }
+
+    .itinerary-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .itinerary-card p {
+      margin: 5px 0;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      color: #fff;
+      font-size: 0.95rem;
+      margin-top: 50px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      opacity: 0.9;
+    }
+
+    @media(max-width:600px){
+      .itinerary-card {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Plan Your Kerala Trip</h1>
+  <p>Create your perfect itinerary with ease!</p>
+</header>
+
+<div class="planner-container">
+  <form class="planner-form" id="plannerForm">
+    <label for="city">Select a City to Visit:</label>
+    <select id="city">
+      <option value="">-- Choose a city --</option>
+      <option value="Kochi">Kochi</option>
+      <option value="Munnar">Munnar</option>
+      <option value="Alleppey">Alleppey</option>
+      <option value="Kumarakom">Kumarakom</option>
+      <option value="Wayanad">Wayanad</option>
+      <option value="Kovalam">Kovalam</option>
+    </select>
+
+    <label for="days">Number of Days:</label>
+    <input type="number" id="days" min="1" max="14" placeholder="Enter number of days">
+
+    <label for="interests">Your Interests:</label>
+    <textarea id="interests" rows="3" placeholder="e.g., Beaches, Hill Stations, Wildlife, Culture"></textarea>
+
+    <button type="button" onclick="generateItinerary()">Generate Itinerary</button>
+  </form>
+
+  <div class="itinerary-container" id="itineraryContainer">
+    <!-- Generated itinerary will appear here -->
+  </div>
+</div>
+
+<footer>
+  © 2025 VoyageVault | Crafted with ❤️ for Kerala Travelers
+</footer>
+
+<script>
+  function generateItinerary() {
+    const city = document.getElementById('city').value;
+    const days = document.getElementById('days').value;
+    const interests = document.getElementById('interests').value;
+
+    const container = document.getElementById('itineraryContainer');
+    container.innerHTML = ''; // Clear previous
+
+    if (!city || !days) {
+      alert('Please select a city and enter number of days!');
+      return;
+    }
+
+    // Simple itinerary generation
+    for (let i = 0; i < days; i++) {
+      const card = document.createElement('div');
+      card.className = 'itinerary-card';
+      card.innerHTML = `
+        <h3>Day ${i + 1}: ${city}</h3>
+        <p>Explore the highlights of ${city}.</p>
+        <p>Recommended activities based on your interests: ${interests || 'Sightseeing, Local Cuisine, Cultural Experiences'}.</p>
+      `;
+      container.appendChild(card);
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -3,30 +3,278 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoyageVault</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Explore Kerala | VoyageVault</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: linear-gradient(90deg, #f6d365, #fda085);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    nav ul.menu {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul.menu li {
+      position: relative;
+      font-weight: 500;
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    nav ul.menu li:hover {
+      color: #333;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .icons span {
+      cursor: pointer;
+    }
+
+    /* Sections */
+    .section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #b71c1c;
+      text-align: center;
+    }
+
+    .cards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      flex: 1 1 250px;
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 25px rgba(183,28,28,0.25);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-content h3 {
+      margin: 0 0 10px 0;
+      color: #b71c1c;
+    }
+
+    .card-content p {
+      margin: 0;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      color: #fff;
+      font-size: 0.95rem;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      margin-top: 50px;
+    }
+
+    @media(max-width:768px){
+      .cards-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        max-width: 350px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">Explore Kerala</div>
-    <nav>
-      <ul class="menu">
-        <li>Popular Cities <i class="fa-solid fa-caret-down"></i></li>
-        <li>Popular attractions <i class="fa-solid fa-caret-down"></i></li>
-        <li>Culture & Heritage <i class="fa-solid fa-caret-down"></i></li>
-        <li>Nature & Wildlife <i class="fa-solid fa-caret-down"></i></li>
-        <li>Festivals & events <i class="fa-solid fa-caret-down"></i></li>
-      </ul>
-    </nav>
-    <div class="icons">
-      <span>EN <i class="fa-solid fa-caret-down"></i></span>
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <i class="fa-regular fa-user"></i>
-      <i class="fa-regular fa-heart"></i>
-      <i class="fa-solid fa-bars"></i>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="logo">Explore Kerala</div>
+  <nav>
+    <ul class="menu">
+      <li>Popular Cities <i class="fa-solid fa-caret-down"></i></li>
+      <li>Popular Attractions <i class="fa-solid fa-caret-down"></i></li>
+      <li>Culture & Heritage <i class="fa-solid fa-caret-down"></i></li>
+      <li>Nature & Wildlife <i class="fa-solid fa-caret-down"></i></li>
+      <li>Festivals & Events <i class="fa-solid fa-caret-down"></i></li>
+    </ul>
+  </nav>
+  <div class="icons">
+    <span>EN <i class="fa-solid fa-caret-down"></i></span>
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-regular fa-user"></i>
+    <i class="fa-regular fa-heart"></i>
+    <i class="fa-solid fa-bars"></i>
+  </div>
+</header>
+
+<!-- Popular Cities Section -->
+<section class="section">
+  <h2>Popular Cities</h2>
+  <div class="cards-row">
+    <div class="card" onclick="window.location.href='#'">
+      <img src="https://source.unsplash.com/400x300/?kochi,kerala" alt="Kochi">
+      <div class="card-content">
+        <h3>Kochi</h3>
+        <p>Historic city with vibrant culture, backwaters, and colonial charm.</p>
+      </div>
     </div>
-  </header>
+    <div class="card" onclick="window.location.href='#'">
+      <img src="https://source.unsplash.com/400x300/?munnar,kerala" alt="Munnar">
+      <div class="card-content">
+        <h3>Munnar</h3>
+        <p>Hill station with tea gardens, lush greenery, and breathtaking views.</p>
+      </div>
+    </div>
+    <div class="card" onclick="window.location.href='#'">
+      <img src="https://source.unsplash.com/400x300/?kovalam,kerala" alt="Kovalam">
+      <div class="card-content">
+        <h3>Kovalam</h3>
+        <p>Famous beach destination known for golden sands and palm-lined shores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Attractions Section -->
+<section class="section">
+  <h2>Popular Attractions</h2>
+  <div class="cards-row">
+    <div class="card" onclick="window.location.href='#'">
+      <img src="https://source.unsplash.com/400x300/?backwaters,kerala" alt="Backwaters">
+      <div class="card-content">
+        <h3>Kerala Backwaters</h3>
+        <p>Serene network of lagoons and canals offering houseboat experiences.</p>
+      </div>
+    </div>
+    <div class="card" onclick="window.location.href='#'">
+      <img src="https://source.unsplash.com/400x300/?athirappilly,kerala" alt="Athirappilly">
+      <div class="card-content">
+        <h3>Athirappilly Falls</h3>
+        <p>Stunning waterfall surrounded by lush forests, perfect for nature lovers.</p>
+      </div>
+    </div>
+    <div class="card" onclick="window.location.href='#'">
+      <img src="https://source.unsplash.com/400x300/?periyar,kerala" alt="Periyar">
+      <div class="card-content">
+        <h3>Periyar Wildlife</h3>
+        <p>Famous sanctuary with elephants, tigers, and rich biodiversity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Culture & Heritage Section -->
+<section class="section">
+  <h2>Culture & Heritage</h2>
+  <div class="cards-row">
+    <div class="card" onclick="window.location.href='#'">
+      <img src="https://source.unsplash.com/400x300/?kerala,temple" alt="Temples">
+      <div class="card-content">
+        <h3>Temples & Palaces</h3>
+        <p>Explore ancient temples and royal palaces reflecting Kerala's heritage.</p>
+      </div>
+    </div>
+    <div class="card" onclick="window.location.href='#'">
+      <img src="https://source.unsplash.com/400x300/?kerala,art" alt="Art">
+      <div class="card-content">
+        <h3>Art & Dance Forms</h3>
+        <p>Experience Kathakali, Mohiniyattam, and other traditional performing arts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Festivals & Events Section -->
+<section class="section">
+  <h2>Festivals & Events</h2>
+  <div class="cards-row">
+    <div class="card" onclick="window.location.href='#'">
+      <img src="https://source.unsplash.com/400x300/?onam,kerala" alt="Onam">
+      <div class="card-content">
+        <h3>Onam Festival</h3>
+        <p>The grand harvest festival with boat races, floral carpets, and cultural events.</p>
+      </div>
+    </div>
+    <div class="card" onclick="window.location.href='#'">
+      <img src="https://source.unsplash.com/400x300/?snakeboat,kerala" alt="Snake Boat Race">
+      <div class="card-content">
+        <h3>Snake Boat Races</h3>
+        <p>Exciting boat races on the backwaters, attracting tourists from all over.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 VoyageVault | Explore the Beauty of Kerala
+</footer>
+
 </body>
 </html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tourist Experiences | VoyageVault</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f4f0;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: #dcdad5;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #5c534f;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #7a746e;
+      opacity: 0.9;
+    }
+
+    /* Add Review Button */
+    #addReviewBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #bfb8a5;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+
+    #addReviewBtn:hover {
+      background: #a89f8c;
+    }
+
+    .reviews-container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .review-card {
+      background: #e3e0d8;
+      border-radius: 20px;
+      padding: 20px;
+      flex: 1 1 300px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .review-card h3 {
+      margin: 0 0 10px 0;
+      color: #4e4a46;
+    }
+
+    .review-card .place {
+      font-style: italic;
+      margin-bottom: 10px;
+      color: #6d6861;
+    }
+
+    .review-card .stars {
+      color: #bdb496;
+      margin-bottom: 10px;
+    }
+
+    .review-card p {
+      margin: 0;
+      line-height: 1.5;
+      color: #5c534f;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+      background: #f5f4f0;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #5c534f;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #5c534f;
+      text-align: center;
+    }
+
+    .modal-content input,
+    .modal-content textarea,
+    .modal-content select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .modal-content button {
+      padding: 12px 20px;
+      background: #bfb8a5;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    .modal-content button:hover {
+      background: #a89f8c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #dcdad5;
+      color: #5c534f;
+      font-size: 0.95rem;
+      margin-top: 50px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      opacity: 0.95;
+    }
+
+    @media(max-width:768px){
+      .review-card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Tourist Experiences in Kerala</h1>
+  <p>Read what visitors have to say about their Kerala adventures</p>
+  <button id="addReviewBtn">+</button>
+</header>
+
+<div class="reviews-container" id="reviewsContainer">
+  <!-- Existing reviews -->
+</div>
+
+<footer>
+  © 2025 VoyageVault | Real Experiences, Real Memories
+</footer>
+
+<!-- Add Review Modal -->
+<div id="reviewModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModal">&times;</span>
+    <h2>Add Your Review</h2>
+    <input type="text" id="reviewerName" placeholder="Your Name">
+    <input type="text" id="reviewPlace" placeholder="Place or Activity">
+    <select id="reviewRating">
+      <option value="5">★★★★★ 5 Stars</option>
+      <option value="4">★★★★ 4 Stars</option>
+      <option value="3">★★★ 3 Stars</option>
+      <option value="2">★★ 2 Stars</option>
+      <option value="1">★ 1 Star</option>
+    </select>
+    <textarea id="reviewText" rows="4" placeholder="Write your experience..."></textarea>
+    <button onclick="addReview()">Submit Review</button>
+  </div>
+</div>
+
+<script>
+  // Prepopulate 10 reviews
+  const reviewsData = [
+    {name:'Emily R.', place:'Munnar Tea Gardens', rating:4, text:'The rolling tea hills were breathtaking! Loved the peaceful walks and the local tea tasting experience.'},
+    {name:'Michael S.', place:'Alleppey Backwaters', rating:5, text:'Staying in a houseboat was magical. Waking up to the calm waters and coconut palms was unforgettable.'},
+    {name:'Sophia L.', place:'Kovalam Beach', rating:3, text:'Beautiful sunset views! The beach was clean and the local seafood stalls were amazing.'},
+    {name:'David T.', place:'Periyar Wildlife Sanctuary', rating:3.5, text:'Had a great wildlife safari. Saw elephants and exotic birds. The guides were knowledgeable and friendly.'},
+    {name:'Laura M.', place:'Fort Kochi', rating:5, text:'Walking through the historic streets was like stepping back in time. Loved the cafes and art galleries.'},
+    {name:'James P.', place:'Athirappilly Falls', rating:3, text:'The waterfall is spectacular! Make sure to carry water shoes for a safe walk near the falls.'},
+    {name:'Olivia K.', place:'Kathakali Performance', rating:4, text:'The traditional dance and makeup were mesmerizing. Really enjoyed the cultural experience.'},
+    {name:'Daniel H.', place:'Wayanad Trekking', rating:3.5, text:'Trekking through the hills and forests was invigorating. Beautiful scenery everywhere!'},
+    {name:'Isabella N.', place:'Varkala Cliff Beach', rating:3, text:'Peaceful and scenic cliffs. Great spot to relax and enjoy sunset views.'},
+    {name:'William G.', place:'Kerala Cuisine Tour', rating:5, text:'Tried local dishes like appam, puttu, and seafood curry. A delightful culinary journey!'}
+  ];
+
+  const reviewsContainer = document.getElementById('reviewsContainer');
+
+  function renderReviews() {
+    reviewsContainer.innerHTML = '';
+    reviewsData.forEach(r => {
+      const starsFull = Math.floor(r.rating);
+      const starsHalf = r.rating - starsFull >= 0.5 ? 1 : 0;
+      const starsEmpty = 5 - starsFull - starsHalf;
+      let starsHTML = '';
+      for(let i=0;i<starsFull;i++) starsHTML += '<i class="fa-solid fa-star"></i> ';
+      if(starsHalf) starsHTML += '<i class="fa-solid fa-star-half-stroke"></i> ';
+      for(let i=0;i<starsEmpty;i++) starsHTML += '<i class="fa-regular fa-star"></i> ';
+
+      const card = document.createElement('div');
+      card.className = 'review-card';
+      card.innerHTML = `
+        <h3>${r.name}</h3>
+        <div class="place">${r.place}</div>
+        <div class="stars">${starsHTML}</div>
+        <p>${r.text}</p>
+      `;
+      reviewsContainer.appendChild(card);
+    });
+  }
+
+  renderReviews();
+
+  // Modal functionality
+  const modal = document.getElementById('reviewModal');
+  const addBtn = document.getElementById('addReviewBtn');
+  const closeModal = document.getElementById('closeModal');
+
+  addBtn.onclick = () => { modal.style.display = 'block'; }
+  closeModal.onclick = () => { modal.style.display = 'none'; }
+  window.onclick = (e) => { if(e.target == modal) modal.style.display='none'; }
+
+  // Add review dynamically
+  function addReview() {
+    const name = document.getElementById('reviewerName').value;
+    const place = document.getElementById('reviewPlace').value;
+    const rating = parseFloat(document.getElementById('reviewRating').value);
+    const text = document.getElementById('reviewText').value;
+
+    if(!name || !place || !text) {
+      alert('Please fill all fields!');
+      return;
+    }
+
+    reviewsData.unshift({name, place, rating, text});
+    renderReviews();
+    modal.style.display = 'none';
+    document.getElementById('reviewerName').value = '';
+    document.getElementById('reviewPlace').value = '';
+    document.getElementById('reviewRating').value = '5';
+    document.getElementById('reviewText').value = '';
+  }
+</script>
+
+</body>
+</html>

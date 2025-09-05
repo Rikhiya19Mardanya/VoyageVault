@@ -6,25 +6,42 @@
   <title>VoyageVault</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 <body>
+
+
   <!-- Navbar -->
-  <header class="navbar">
+ <header class="navbar">
     <div class="logo">VoyageVault</div>
     <nav>
       <ul class="menu">
-        <li>Destinations <i class="fa-solid fa-caret-down"></i></li>
-        <li><a href="explore.html">Explore </a> <i class="fa-solid fa-caret-down"></i></li>
-        <li>Experiences <i class="fa-solid fa-caret-down"></i></li>
-        <li>Plan your trip <i class="fa-solid fa-caret-down"></i></li>
+        <li><a href="destinations.html">Destinations</a> <i class="fa-solid fa-caret-down"></i></li>
+        <li><a href="explore.html">Explore</a> <i class="fa-solid fa-caret-down"></i></li>
+        <li><a href="experience.html">Experiences</a><i class="fa-solid fa-caret-down"></i></li>
+        <li><a href="plan.html">Plan your trip</a> <i class="fa-solid fa-caret-down"></i></li>
         <li><a href="services.html">Services</a> <i class="fa-solid fa-caret-down"></i></li>
       </ul>
     </nav>
     <div class="icons">
-      <span>EN <i class="fa-solid fa-caret-down"></i></span>
+
+      <!-- Language Dropdown -->
+      <div class="language-dropdown">
+        <button class="dropbtn">EN <i class="fa-solid fa-caret-down"></i></button>
+        <div class="dropdown-content">
+          <a href="#" onclick="changeLanguage('en')">English</a>
+          <a href="#" onclick="changeLanguage('bn')">বাংলা [Bengali]</a>
+          <a href="#" onclick="changeLanguage('hi')">हिंदी [Hindi]</a>
+          <a href="#" onclick="changeLanguage('ru')">русский [Russian]</a>
+          <a href="#" onclick="changeLanguage('es')">español [Spanish]</a>
+          <a href="#" onclick="changeLanguage('fr')">français [French]</a>
+          <a href="#" onclick="changeLanguage('zh-CN')">汉语 [Chinese]</a>
+          <a href="#" onclick="changeLanguage('ar')">العربية [Arabic]</a>
+        </div>
+      </div>
+
+      <!-- Other icons -->
       <i class="fa-solid fa-magnifying-glass"></i>
-      <i class="fa-regular fa-user"></i>
+      <a href="login.html"><i class="fa-regular fa-user"></i></a>
       <i class="fa-regular fa-heart"></i>
       <i class="fa-solid fa-bars"></i>
     </div>
@@ -33,65 +50,137 @@
   <!-- Slider -->
   <div class="slider-container">
     <div class="slider" id="slider">
-      <img src="kochi.webp" alt="Korchi">
-      <img src="kovalam.webp" alt="Kovalam">
-      <img src="munnar.webp" alt="Munnar">
-      <img src="Thiruvananthapuram.jpg" alt="Thiruvananthapuram">
-      <img src="Marari beach.webp" alt="Marari beach">
+      <img src="image/kochi.webp" alt="Kochi">
+      <img src="image/kovalam.webp" alt="Kovalam">
+      <img src="image/munnar.webp" alt="Munnar">
+      <img src="image/Thiruvananthapuram.jpg" alt="Thiruvananthapuram">
+      <img src="image/Marari beach.webp" alt="Marari beach">
     </div>
     <button class="nav-btn prev" onclick="prevSlide()">&#8249;</button>
     <button class="nav-btn next" onclick="nextSlide()">&#8250;</button>
   </div>
 
+  <!-- Card Slider Section -->
+  <div class="card-slider-container">
+    <div class="card-slider" id="card-slider">
+      <div class="card">
+        <img src="images/golden-temple.jpg" alt="The Golden Temple">
+        <div class="card-content">
+          <h3>The Golden Temple</h3>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/shanti-stupa.jpg" alt="Shanti Stupa">
+        <div class="card-content">
+          <h3>Shanti Stupa</h3>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/tulip-garden.jpg" alt="Tulip Garden">
+        <div class="card-content">
+          <h3>Tulip Garden</h3>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <div class="card-content">
+          <h3>Rohtang Pass</h3>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+       <div class="card">
+        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <div class="card-content">
+          <h3>Rohtang Pass</h3>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+       <div class="card">
+        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <div class="card-content">
+          <h3>Rohtang Pass</h3>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+       <div class="card">
+        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <div class="card-content">
+          <h3>Rohtang Pass</h3>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+       <div class="card">
+        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <div class="card-content">
+          <h3>Rohtang Pass</h3>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+       <div class="card">
+        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <div class="card-content">
+          <h3>Rohtang Pass</h3>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+       <div class="card">
+        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <div class="card-content">
+          <h3>Rohtang Pass</h3>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+    </div>
+    <button class="card-nav prev" onclick="prevCard()">&#8249;</button>
+    <button class="card-nav next" onclick="nextCard()">&#8250;</button>
+  </div>
+
   <!-- Kerala Content Section -->
-<section class="kerala-intro">
-  <div class="container">
-    <h2>Kerala's Timeless Beauty and Cultural Riches</h2>
-
-    <!-- Preview paragraph always visible -->
-    <p id="kerala-preview">
-      Welcome to the enchanting realm of Kerala, where the heart and essence of this divine land reside in its scenic landscapes and heartwarming villages, each weaving an interesting tale of timeless traditions and vibrant cultures. Here, the rustic beauty remains untouched by the tides of industrialisation, preserving an authentic charm that beckons you to savour a serene and indigenous experience. The warmth of its people and the aroma of its flavourful cuisine add to the allure of Kerala, making it a destination where you can immerse yourself in vibrant traditions and unwind in the lap of nature.
-    </p>
-
-    <!-- Hidden content initially -->
-    <div id="kerala-full" style="display: none;">
-      <h3>Kerala's Historical Marvels</h3>
-      <p>
-        Delve into the historical wonders of Kerala, including the grandeur of the Mattancherry Palace, Shakthan Thampuran Palace, Bolgatty Palace, Palakkad Fort, Thalassery Fort, Bekal Fort, and Fort Kochi, each standing as a testament to the region's splendid past. In the heart of Kochi, the Kerala Folklore Museum showcases a rich tapestry of the state's cultural, artistic, and architectural heritage...
+  <section class="kerala-intro">
+    <div class="container">
+      <h2>Kerala's Timeless Beauty and Cultural Riches</h2>
+      <p id="kerala-preview">
+        Welcome to the enchanting realm of Kerala, where the heart and essence of this divine land reside in its scenic landscapes and heartwarming villages, each weaving an interesting tale of timeless traditions and vibrant cultures. Here, the rustic beauty remains untouched by the tides of industrialisation, preserving an authentic charm that beckons you to savour a serene and indigenous experience. The warmth of its people and the aroma of its flavourful cuisine add to the allure of Kerala, making it a destination where you can immerse yourself in vibrant traditions and unwind in the lap of nature.
       </p>
-
-      <h3>A Paradise for Nature Lovers</h3>
-      <p>
-        Kerala's lush landscapes invites you to explore its mesmerising beauty, visit Munnar, an idyllic destination to immerse in the region's natural allure. Amidst majestic mountains and evergreen forests...
-      </p>
-
-      <h3>Go on a Spiritual Journey Through Kerala</h3>
-      <p>
-        Kerala houses a multitude of revered religious sites that draw devotees from various faiths and backgrounds. In the district of Thrissur, the town of Guruvayoor is renowned for its illustrious Guruvayoor Temple...
-      </p>
-
-      <h3>Art Forms Reflecting Rich Culture</h3>
-      <p>
-        You are in for a memorable treat if you’re an art lover, as Kerala is renowned for its vibrant artistic expressions. Its art and cultural forms encompass classical performances, age-old rituals, religious expressions, enchanting folk tales, and martial arts...
-      </p>
-
-      <h3>Charismatic Cuisine of Kerala</h3>
-      <p>
-        Kerala's culinary delights offer a rich array of both vegetarian and non-vegetarian dishes, featuring an exquisite blend of fish, meat, poultry, and rice preparations...
-      </p>
-
-      <h3>Kerala's Festive Kaleidoscope</h3>
-      <p>
-        Kerala, being called the God’s Own Country, celebrates several important and fascinating festivals. Onam, a vibrant 10-day harvest festival, unfolds during August-September...
-      </p>
+      <div id="kerala-full" style="display: none;">
+        <h3>Kerala's Historical Marvels</h3>
+        <p>
+          Delve into the historical wonders of Kerala, including the grandeur of the Mattancherry Palace, Shakthan Thampuran Palace, Bolgatty Palace, Palakkad Fort, Thalassery Fort, Bekal Fort, and Fort Kochi, each standing as a testament to the region's splendid past. In the heart of Kochi, the Kerala Folklore Museum showcases a rich tapestry of the state's cultural, artistic, and architectural heritage...
+        </p>
+        <h3>A Paradise for Nature Lovers</h3>
+        <p>
+          Kerala's lush landscapes invites you to explore its mesmerising beauty, visit Munnar, an idyllic destination to immerse in the region's natural allure. Amidst majestic mountains and evergreen forests...
+        </p>
+        <h3>Go on a Spiritual Journey Through Kerala</h3>
+        <p>
+          Kerala houses a multitude of revered religious sites that draw devotees from various faiths and backgrounds. In the district of Thrissur, the town of Guruvayoor is renowned for its illustrious Guruvayoor Temple...
+        </p>
+        <h3>Art Forms Reflecting Rich Culture</h3>
+        <p>
+          You are in for a memorable treat if you’re an art lover, as Kerala is renowned for its vibrant artistic expressions. Its art and cultural forms encompass classical performances, age-old rituals, religious expressions, enchanting folk tales, and martial arts...
+        </p>
+        <h3>Charismatic Cuisine of Kerala</h3>
+        <p>
+          Kerala's culinary delights offer a rich array of both vegetarian and non-vegetarian dishes, featuring an exquisite blend of fish, meat, poultry, and rice preparations...
+        </p>
+        <h3>Kerala's Festive Kaleidoscope</h3>
+        <p>
+          Kerala, being called the God’s Own Country, celebrates several important and fascinating festivals. Onam, a vibrant 10-day harvest festival, unfolds during August-September...
+        </p>
+      </div>
+      <button id="read-more-btn" class="read-more-btn" onclick="toggleReadMore()">Read More</button>
     </div>
 
-    <!-- Read More / Read Less Button -->
-    <button id="read-more-btn" class="read-more-btn">Read More</button>
-  </div>
+  <section id="about" style="padding: 2rem; background: #f9f9f9;">
+  <h2>About VoyageVault</h2>
+  <p>
+    VoyageVault is your trusted travel companion, offering curated accommodations, travel tips, and seamless booking experiences. 
+    Our mission is to make your journeys memorable and hassle-free.
+  </p>
 </section>
-
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather | VoyageVault</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: #b71c1c;
+      color: #fff;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Container */
+    .weather-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    /* Search */
+    .weather-search {
+      display: flex;
+      margin-bottom: 30px;
+      justify-content: center;
+      gap: 10px;
+    }
+    .weather-search input {
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      width: 70%;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .weather-search input:focus {
+      outline: none;
+      border-color: #b71c1c;
+      box-shadow: 0 0 8px rgba(183,28,28,0.3);
+    }
+    .weather-search button {
+      padding: 10px 15px;
+      background: #b71c1c;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .weather-search button:hover {
+      background: #d32f2f;
+    }
+
+    /* Weather card */
+    .weather-card {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .weather-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(183,28,28,0.25);
+    }
+    .weather-card i {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #b71c1c;
+    }
+    .weather-card h2 {
+      margin: 10px 0;
+      font-size: 1.8rem;
+    }
+    .weather-card p {
+      font-size: 1.1rem;
+      margin: 5px 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #17252a;
+      color: #fff;
+      font-size: 0.95rem;
+      margin-top: 50px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Kerala Weather</h1>
+  <p>Check current weather conditions across Kerala</p>
+</header>
+
+<div class="weather-container">
+  <!-- Search Bar -->
+  <div class="weather-search">
+    <input type="text" id="cityInput" placeholder="Enter city or location">
+    <button onclick="getWeather()">Check</button>
+  </div>
+
+  <!-- Weather Card -->
+  <div class="weather-card" id="weatherCard">
+    <i class="fa-solid fa-cloud-sun"></i>
+    <h2>--°C</h2>
+    <p id="condition">Weather condition</p>
+    <p id="humidity">Humidity: --%</p>
+    <p id="wind">Wind: -- km/h</p>
+  </div>
+</div>
+
+<footer>
+  © 2025 VoyageVault | Crafted with ❤️ for Travelers
+</footer>
+
+<script>
+  // Placeholder JS: Replace with API integration later
+  function getWeather() {
+    const city = document.getElementById('cityInput').value;
+    if (!city) {
+      alert('Please enter a city or location!');
+      return;
+    }
+
+    // Placeholder data (for now)
+    const weatherData = {
+      temp: Math.floor(Math.random() * 35) + 20, // 20-55°C
+      condition: "Sunny",
+      humidity: Math.floor(Math.random() * 80) + 10,
+      wind: Math.floor(Math.random() * 30) + 5
+    };
+
+    document.querySelector('.weather-card h2').textContent = `${weatherData.temp}°C`;
+    document.getElementById('condition').textContent = weatherData.condition;
+    document.getElementById('humidity').textContent = `Humidity: ${weatherData.humidity}%`;
+    document.getElementById('wind').textContent = `Wind: ${weatherData.wind} km/h`;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kerala Stays — Accommodations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7faf9;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --brand: #0ea5a3; /* teal */
+      --brand-600: #098a88;
+      --ring: rgba(14,165,163,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: var(--bg); }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; border-radius: 14px; }
+
+    /* Layout */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .nav { max-width: 1100px; margin: 0 auto; padding: 14px 18px; display: flex; align-items: center; gap: 14px; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .2px; }
+    .brand .logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #22d3ee, #0ea5a3); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; }
+    .navlinks { display: flex; gap: 16px; font-weight: 500; color: var(--muted); }
+    .navlinks a.active { color: var(--brand); }
+
+    .hero { max-width: 1100px; margin: 28px auto 0; padding: 0 18px 18px; }
+    .hero-card { background: var(--card); border: 1px solid #e5e7eb; border-radius: 20px; padding: 18px; box-shadow: 0 6px 18px rgba(2,8,23,.06); }
+    .hero h1 { margin: 6px 0 4px; font-size: clamp(24px, 4vw, 34px); }
+    .hero p { margin: 0; color: var(--muted); }
+
+    /* Search / Filters */
+    .filters { margin-top: 14px; display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .filters .row { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr auto; gap: 10px; }
+    @media (max-width: 900px) { .filters .row { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .filters .row { grid-template-columns: 1fr; } }
+    .field { background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px 12px; border-radius: 12px; display: grid; gap: 4px; }
+    .label { font-size: 12px; color: var(--muted); }
+    .input, select, input[type="range"] { width: 100%; border: none; background: transparent; outline: none; font-size: 14px; color: var(--text); }
+    .actions { display: flex; gap: 10px; align-items: end; }
+    .btn {
+      appearance: none; border: none; background: var(--brand); color: #fff; padding: 12px 16px; border-radius: 12px; font-weight: 600; cursor: pointer;
+      box-shadow: 0 6px 14px rgba(14,165,163,.25);
+    }
+    .btn:hover { background: var(--brand-600); }
+    .btn.secondary { background: #111827; box-shadow: 0 6px 14px rgba(17,24,39,.15); }
+
+    /* Results grid */
+    .section { max-width: 1100px; margin: 18px auto; padding: 0 18px; }
+    .section h2 { font-size: clamp(18px, 3.2vw, 22px); margin: 8px 0 14px; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+    .card { background: var(--card); border: 1px solid #e5e7eb; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 8px 20px rgba(2,8,23,.06); }
+    .card .img-wrap { aspect-ratio: 16/10; overflow: hidden; }
+    .card .content { padding: 14px; display: grid; gap: 8px; }
+    .title { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .title h3 { margin: 0; font-size: 16px; }
+    .badge { font-size: 12px; padding: 6px 10px; border-radius: 999px; background: #ecfeff; color: #0e7490; border: 1px solid #a5f3fc; }
+    .meta { display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 13px; }
+    .amenities { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font-size: 12px; padding: 6px 10px; background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 999px; }
+    .price { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
+    .price strong { font-size: 18px; }
+
+    .rating { display: inline-flex; align-items: center; gap: 6px; }
+    .star { width: 16px; height: 16px; fill: #f59e0b; }
+
+    /* Footer */
+    footer { margin-top: 30px; background: #0f172a; color: #e5e7eb; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 24px 18px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+    .footer-inner a { color: #e5e7eb; opacity: .9; }
+
+    /* Utility */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">KV</div>
+        <span>Kerala Voyages</span>
+      </div>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="#" class="active">Accommodations</a>
+        <a href="#">Experiences</a>
+        <a href="plan.html">Plan Trip</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-card">
+        <h1 id="page-title">Find your stay in Kerala</h1>
+        <p>Browse hand‑picked houseboats, beach resorts, hill‑station cottages, and heritage homestays.</p>
+
+        <!-- Search & Filters -->
+        <form id="filterForm" class="filters" onsubmit="event.preventDefault(); applyFilters();">
+          <div class="row">
+            <label class="field">
+              <span class="label">Search by name or location</span>
+              <input class="input" type="text" id="q" placeholder="e.g., Munnar, Alleppey, houseboat…" />
+            </label>
+
+            <label class="field">
+              <span class="label">Type</span>
+              <select id="type">
+                <option value="">Any</option>
+                <option>Resort</option>
+                <option>Homestay</option>
+                <option>Houseboat</option>
+                <option>Hotel</option>
+                <option>Cottage</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="label">Min. Rating</span>
+              <select id="minRating">
+                <option value="">Any</option>
+                <option value="4.5">4.5+</option>
+                <option value="4">4.0+</option>
+                <option value="3.5">3.5+</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="label">Max Price / night (₹)</span>
+              <input class="input" type="number" id="maxPrice" min="0" step="100" placeholder="e.g., 4500" />
+            </label>
+
+            <div class="actions">
+              <button type="submit" class="btn" aria-label="Apply filters">Search</button>
+              <button type="button" class="btn secondary" onclick="resetFilters()">Reset</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="results-title">
+      <h2 id="results-title">Top stays</h2>
+      <div id="results" class="grid" aria-live="polite">
+        <!-- Card Template Instances -->
+        
+        <article class="card" data-name="Lakeview Houseboat" data-location="Alleppey" data-type="Houseboat" data-rating="4.7" data-price="5200">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1562003389-aad8b4a9dc96?q=80&w=1200&auto=format&fit=crop" alt="Traditional Kerala houseboat on tranquil backwaters" loading="lazy"></div>
+          <div class="content">
+            <div class="title">
+              <h3>Lakeview Houseboat</h3>
+              <span class="badge">Houseboat · Alleppey</span>
+            </div>
+            <div class="meta">
+              <span class="rating" aria-label="Rating 4.7 out of 5">{★} 4.7</span>
+              <span>•</span>
+              <span>Breakfast included</span>
+            </div>
+            <div class="amenities">
+              <span class="chip">A/C</span>
+              <span class="chip">Private Deck</span>
+              <span class="chip">Onboard Chef</span>
+            </div>
+            <div class="price">
+              <strong>₹5,200</strong>
+              <a class="btn" href="#" aria-label="Book Lakeview Houseboat">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-name="Tea Garden Resort" data-location="Munnar" data-type="Resort" data-rating="4.6" data-price="4800">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1200&auto=format&fit=crop" alt="Green tea plantations in Munnar with a resort in the hills" loading="lazy"></div>
+          <div class="content">
+            <div class="title">
+              <h3>Tea Garden Resort</h3>
+              <span class="badge">Resort · Munnar</span>
+            </div>
+            <div class="meta">
+              <span class="rating" aria-label="Rating 4.6 out of 5">{★} 4.6</span>
+              <span>•</span>
+              <span>Mountain view</span>
+            </div>
+            <div class="amenities">
+              <span class="chip">Spa</span>
+              <span class="chip">Bonfire</span>
+              <span class="chip">Wi‑Fi</span>
+            </div>
+            <div class="price">
+              <strong>₹4,800</strong>
+              <a class="btn" href="#" aria-label="Book Tea Garden Resort">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-name="Kovalam Beachfront Hotel" data-location="Kovalam" data-type="Hotel" data-rating="4.3" data-price="3900">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1501117716987-c8e28e3ba87f?q=80&w=1200&auto=format&fit=crop" alt="Beachfront hotel near palm-lined Kovalam beach" loading="lazy"></div>
+          <div class="content">
+            <div class="title">
+              <h3>Kovalam Beachfront Hotel</h3>
+              <span class="badge">Hotel · Kovalam</span>
+            </div>
+            <div class="meta">
+              <span class="rating" aria-label="Rating 4.3 out of 5">{★} 4.3</span>
+              <span>•</span>
+              <span>Near Lighthouse Beach</span>
+            </div>
+            <div class="amenities">
+              <span class="chip">Pool</span>
+              <span class="chip">Sea View</span>
+              <span class="chip">Breakfast</span>
+            </div>
+            <div class="price">
+              <strong>₹3,900</strong>
+              <a class="btn" href="#" aria-label="Book Kovalam Beachfront Hotel">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-name="Wayanad Forest Homestay" data-location="Wayanad" data-type="Homestay" data-rating="4.8" data-price="3500">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1200&auto=format&fit=crop" alt="Cozy cottage surrounded by rainforest in Wayanad" loading="lazy"></div>
+          <div class="content">
+            <div class="title">
+              <h3>Wayanad Forest Homestay</h3>
+              <span class="badge">Homestay · Wayanad</span>
+            </div>
+            <div class="meta">
+              <span class="rating" aria-label="Rating 4.8 out of 5">{★} 4.8</span>
+              <span>•</span>
+              <span>Family‑run</span>
+            </div>
+            <div class="amenities">
+              <span class="chip">Nature Walks</span>
+              <span class="chip">Organic Meals</span>
+              <span class="chip">Parking</span>
+            </div>
+            <div class="price">
+              <strong>₹3,500</strong>
+              <a class="btn" href="#" aria-label="Book Wayanad Forest Homestay">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-name="Fort Kochi Heritage Inn" data-location="Kochi" data-type="Hotel" data-rating="4.5" data-price="4200">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop" alt="Heritage building with colonial architecture in Fort Kochi" loading="lazy"></div>
+          <div class="content">
+            <div class="title">
+              <h3>Fort Kochi Heritage Inn</h3>
+              <span class="badge">Hotel · Kochi</span>
+            </div>
+            <div class="meta">
+              <span class="rating" aria-label="Rating 4.5 out of 5">{★} 4.5</span>
+              <span>•</span>
+              <span>Walk to Chinese Nets</span>
+            </div>
+            <div class="amenities">
+              <span class="chip">Cafe</span>
+              <span class="chip">AC</span>
+              <span class="chip">Airport Shuttle</span>
+            </div>
+            <div class="price">
+              <strong>₹4,200</strong>
+              <a class="btn" href="#" aria-label="Book Fort Kochi Heritage Inn">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-name="Varkala Cliff Cottage" data-location="Varkala" data-type="Cottage" data-rating="4.2" data-price="2800">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop" alt="Cliffside cottages overlooking Varkala beach" loading="lazy"></div>
+          <div class="content">
+            <div class="title">
+              <h3>Varkala Cliff Cottage</h3>
+              <span class="badge">Cottage · Varkala</span>
+            </div>
+            <div class="meta">
+              <span class="rating" aria-label="Rating 4.2 out of 5">{★} 4.2</span>
+              <span>•</span>
+              <span>Cliff cafés nearby</span>
+            </div>
+            <div class="amenities">
+              <span class="chip">Kitchenette</span>
+              <span class="chip">Wi‑Fi</span>
+              <span class="chip">Scooter Rent</span>
+            </div>
+            <div class="price">
+              <strong>₹2,800</strong>
+              <a class="btn" href="#" aria-label="Book Varkala Cliff Cottage">Book</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="map-title">
+      <h2 id="map-title">Map preview</h2>
+      <div style="height: 280px; border-radius: 18px; background: radial-gradient(1200px 280px at 10% -40%, #cffafe, transparent), linear-gradient(135deg, #d1fae5, #f0fdf4); border: 1px solid #e5e7eb; display:flex; align-items:center; justify-content:center; color:#065f46; font-weight:600;">
+        Map embed placeholder — replace with Google Maps or Leaflet
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2025 Kerala Voyages</div>
+      <div><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Contact</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Replace {★} with an inline SVG star for consistent styling
+    document.querySelectorAll('.rating').forEach(el => {
+      el.innerHTML = '<svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.802 2.036a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.802-2.036a1 1 0 00-1.176 0l-2.802 2.036c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.88 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>' + ' ' + el.textContent.replace('{★}', '');
+    });
+
+    function applyFilters() {
+      const q = document.getElementById('q').value.trim().toLowerCase();
+      const type = document.getElementById('type').value;
+      const minRating = parseFloat(document.getElementById('minRating').value) || 0;
+      const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+
+      const cards = Array.from(document.querySelectorAll('.card'));
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const name = card.dataset.name.toLowerCase();
+        const location = card.dataset.location.toLowerCase();
+        const ctype = card.dataset.type;
+        const rating = parseFloat(card.dataset.rating);
+        const price = parseFloat(card.dataset.price);
+
+        const matchesQuery = !q || name.includes(q) || location.includes(q);
+        const matchesType = !type || ctype === type;
+        const matchesRating = rating >= minRating;
+        const matchesPrice = price <= maxPrice;
+
+        if (matchesQuery && matchesType && matchesRating && matchesPrice) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      const results = document.getElementById('results');
+      if (!document.getElementById('emptyState')) {
+        const empty = document.createElement('div');
+        empty.id = 'emptyState';
+        empty.style.display = 'none';
+        empty.style.gridColumn = '1 / -1';
+        empty.style.textAlign = 'center';
+        empty.style.padding = '18px';
+        empty.style.border = '1px dashed #d1d5db';
+        empty.style.borderRadius = '16px';
+        empty.textContent = 'No results match your filters. Try adjusting them.';
+        results.appendChild(empty);
+      }
+      document.getElementById('emptyState').style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function resetFilters() {
+      document.getElementById('q').value = '';
+      document.getElementById('type').value = '';
+      document.getElementById('minRating').value = '';
+      document.getElementById('maxPrice').value = '';
+      applyFilters();
+    }
+
+    // Initialize
+    applyFilters();
+  </script>
+</body>
+</html>
