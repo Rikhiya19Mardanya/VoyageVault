@@ -29,3 +29,10 @@ readMoreBtn.addEventListener("click", () => {
     readMoreBtn.textContent = "Read More";
   }
 });
+function changeLanguage(lang) {
+  var selectField = document.querySelector("select.goog-te-combo");
+  if (selectField) {
+    selectField.value = lang;
+    selectField.dispatchEvent(new Event("change"));
+  }
+}
