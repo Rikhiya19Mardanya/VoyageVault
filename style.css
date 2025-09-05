@@ -38,7 +38,7 @@ body {
 }
 
 .menu li:hover {
-  color: #d02265;;
+  color: #d02265;
 }
 
 .icons {
@@ -48,10 +48,21 @@ body {
   font-size: 14px;
 }
 
-.icons i {
+.icons i,
+.icons span,
+.menu li {
+  color: white;            /* default white */
   cursor: pointer;
   font-size: 18px;
+  transition: color 0.3s ease;
 }
+
+.icons i:hover,
+.icons span:hover,
+.menu li:hover {
+  color: #d02265;          /* turns pink only on hover */
+}
+
 
 /* Slider */
 .slider-container {
@@ -229,6 +240,12 @@ body {
   }
 }
 
+a {
+  text-decoration: none; /* remove underline */
+  color: inherit;        /* inherit parent color instead of violet */
+}
+
+
 .nav-btn:hover {
   background: rgba(18, 0, 0, 0.8);
 }
@@ -321,6 +338,18 @@ body {
   background-color: #f9bfd5;
 }
 
+.language-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropbtn {
+  background: none;
+  border: none;
+  color: white;       /* default white */
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
 
 /* Make EN turn pink when hovered */
 .dropbtn:hover {
@@ -352,4 +381,3 @@ body {
 
 .language-dropdown:hover .dropdown-content {
   display: block;
-}

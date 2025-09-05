@@ -73,4 +73,4 @@ function changeLanguage(lang) {
     selectField.value = lang;
     selectField.dispatchEvent(new Event("change"));
   }
-}
+
