@@ -8,8 +8,8 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f0f4f8;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #000000;
       color: #333;
     }
 
@@ -19,17 +19,20 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 30px;
-      background: linear-gradient(90deg, #f6d365, #fda085);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #f8a1d1, #cbb4f5);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
       position: sticky;
       top: 0;
       z-index: 100;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
     }
 
     .logo {
       font-size: 1.8rem;
       font-weight: bold;
       color: #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
     nav ul.menu {
@@ -49,49 +52,56 @@
     }
 
     nav ul.menu li:hover {
-      color: #333;
+      color:  #d02265;
     }
 
     .icons {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
       color: #fff;
       font-size: 1rem;
     }
 
-    .icons span {
+    .icons span, .icons i {
       cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .icons span:hover, .icons i:hover {
+      color:  #d02265;
     }
 
     /* Sections */
     .section {
       max-width: 1200px;
-      margin: 50px auto;
+      margin: 60px auto;
       padding: 0 20px;
     }
 
     .section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #b71c1c;
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      color:  #d02265;
       text-align: center;
+      font-weight: 700;
     }
 
     .cards-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 25px;
       justify-content: center;
     }
 
     .card {
-      flex: 1 1 250px;
-      background: linear-gradient(135deg, #a8edea, #fed6e3);
-      border-radius: 20px;
+      flex: 1 1 260px;
+      max-width: 280px;
+      background: linear-gradient(145deg, #f9e2ff, #d9f3ff);
+      border-radius: 25px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
       cursor: pointer;
       display: flex;
       flex-direction: column;
@@ -99,17 +109,19 @@
 
     .card:hover {
       transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 12px 25px rgba(183,28,28,0.25);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      background: linear-gradient(145deg, #ffd1dc, #a0e7ff);
     }
 
     .card img {
       width: 100%;
-      height: 160px;
+      height: 180px;
       object-fit: cover;
+      border-radius: 25px 25px 0 0;
     }
 
     .card-content {
-      padding: 15px 20px;
+      padding: 18px 20px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -117,26 +129,31 @@
     }
 
     .card-content h3 {
-      margin: 0 0 10px 0;
-      color: #b71c1c;
+      margin: 0 0 12px 0;
+      color: #5c3d6e;
+      font-size: 1.4rem;
+      font-weight: 700;
     }
 
     .card-content p {
       margin: 0;
-      opacity: 0.85;
-      line-height: 1.4;
+      opacity: 0.9;
+      line-height: 1.5;
+      color: #4b3f51;
+      flex-grow: 1;
     }
 
     /* Footer */
     footer {
       text-align: center;
       padding: 25px;
-      background: linear-gradient(135deg, #f6d365, #fda085);
-      color: #fff;
+      background: #f7f0ff;
+      color: #5c3d6e;
       font-size: 0.95rem;
       border-top-left-radius: 30px;
       border-top-right-radius: 30px;
       margin-top: 50px;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
     }
 
     @media(max-width:768px){
@@ -166,7 +183,7 @@
     </ul>
   </nav>
   <div class="icons">
-    <span>EN <i class="fa-solid fa-caret-down"></i></span>
+    <span><i class="fa-solid fa-globe"></i> <i class="fa-solid fa-caret-down"></i></span>
     <i class="fa-solid fa-magnifying-glass"></i>
     <i class="fa-regular fa-user"></i>
     <i class="fa-regular fa-heart"></i>
@@ -273,7 +290,7 @@
 </section>
 
 <footer>
-  © 2025 VoyageVault | Explore the Beauty of Kerala
+  © 2025 VoyageVault | Explore the Wonders of Kerala
 </footer>
 
 </body>

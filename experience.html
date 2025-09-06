@@ -8,30 +8,32 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f5f4f0;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #000000;
       color: #333;
     }
 
     header {
       text-align: center;
-      padding: 40px 20px;
-      background: #dcdad5;
-      border-bottom-left-radius: 40px;
-      border-bottom-right-radius: 40px;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #f8a1d1, #cbb4f5);
+      color: #fff;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       position: relative;
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 10px;
-      color: #5c534f;
+      font-weight: 800;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
     header p {
       font-size: 1.2rem;
-      color: #7a746e;
+      font-weight: 500;
       opacity: 0.9;
     }
 
@@ -40,20 +42,21 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      background: #bfb8a5;
+      background: linear-gradient(90deg, #ff8cf0, #62d4ff);
       color: #fff;
       border: none;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 55px;
+      height: 55px;
       font-size: 2rem;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: background 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s, background 0.3s;
     }
 
     #addReviewBtn:hover {
-      background: #a89f8c;
+      transform: scale(1.1);
+      background: linear-gradient(90deg, #ff62e8, #38c0ff);
     }
 
     .reviews-container {
@@ -62,47 +65,52 @@
       padding: 0 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 25px;
       justify-content: center;
     }
 
     .review-card {
-      background: #e3e0d8;
-      border-radius: 20px;
-      padding: 20px;
-      flex: 1 1 300px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: linear-gradient(145deg, #f9e2ff, #d9f3ff);
+      border-radius: 25px;
+      padding: 25px;
+      flex: 1 1 280px;
+      max-width: 300px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .review-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      background: linear-gradient(145deg, #ffd1dc, #a0e7ff);
     }
 
     .review-card h3 {
-      margin: 0 0 10px 0;
-      color: #4e4a46;
+      margin: 0 0 8px 0;
+      color: #5c3d6e;
+      font-size: 1.3rem;
+      font-weight: 700;
     }
 
     .review-card .place {
       font-style: italic;
-      margin-bottom: 10px;
-      color: #6d6861;
+      margin-bottom: 8px;
+      color: #6a5578;
     }
 
     .review-card .stars {
-      color: #bdb496;
-      margin-bottom: 10px;
+      color: #ffb84d;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
     }
 
     .review-card p {
       margin: 0;
       line-height: 1.5;
-      color: #5c534f;
+      color: #4b3f51;
     }
 
     /* Modal Styles */
@@ -115,14 +123,14 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.5);
     }
 
     .modal-content {
-      background: #f5f4f0;
-      margin: 10% auto;
+      background: #fff;
+      margin: 8% auto;
       padding: 30px;
-      border-radius: 20px;
+      border-radius: 25px;
       max-width: 500px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.2);
       position: relative;
@@ -134,12 +142,12 @@
       right: 20px;
       font-size: 1.5rem;
       cursor: pointer;
-      color: #5c534f;
+      color: #5c3d6e;
     }
 
     .modal-content h2 {
       margin-top: 0;
-      color: #5c534f;
+      color: #5c3d6e;
       text-align: center;
     }
 
@@ -149,37 +157,38 @@
       width: 100%;
       padding: 12px;
       margin: 10px 0;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 1px solid #ccc;
       font-size: 1rem;
     }
 
     .modal-content button {
       padding: 12px 20px;
-      background: #bfb8a5;
+      background: linear-gradient(90deg, #ff8cf0, #62d4ff);
       color: #fff;
       border: none;
-      border-radius: 12px;
+      border-radius: 15px;
       cursor: pointer;
       font-size: 1rem;
       width: 100%;
-      transition: background 0.3s;
+      transition: transform 0.3s, background 0.3s;
     }
 
     .modal-content button:hover {
-      background: #a89f8c;
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #ff62e8, #38c0ff);
     }
 
     footer {
       text-align: center;
       padding: 25px;
-      background: #dcdad5;
-      color: #5c534f;
+      background: #f7f0ff;
+      color: #5c3d6e;
       font-size: 0.95rem;
       margin-top: 50px;
       border-top-left-radius: 30px;
       border-top-right-radius: 30px;
-      opacity: 0.95;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
     }
 
     @media(max-width:768px){
@@ -193,13 +202,11 @@
 
 <header>
   <h1>Tourist Experiences in Kerala</h1>
-  <p>Read what visitors have to say about their Kerala adventures</p>
+  <p>Read what travelers have to say about their adventures!</p>
   <button id="addReviewBtn">+</button>
 </header>
 
-<div class="reviews-container" id="reviewsContainer">
-  <!-- Existing reviews -->
-</div>
+<div class="reviews-container" id="reviewsContainer"></div>
 
 <footer>
   © 2025 VoyageVault | Real Experiences, Real Memories
