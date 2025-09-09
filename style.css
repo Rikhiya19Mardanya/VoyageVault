@@ -1,17 +1,54 @@
+/* ---------- Global Reset ---------- */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: black;
-  color: white;
   overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* Navbar */
+
+/* ---------- Light Mode (default) ---------- */
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --accent: #d02265;
+  --surface: #f9f9f9;
+  --surface-2: #f1f1f1;
+}
+
+/* ---------- Dark Mode ---------- */
+.dark-mode {
+  --bg: #000000;
+  --text: #ffffff;
+  --accent: #d02265;
+  --surface: #151515;
+  --surface-2: #1f1f1f;
+}
+
+/* ---------- Apply Vars Globally ---------- */
+html, body, section, div, footer, header, nav {
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+a:hover { color: var(--accent); }
+
+/* ---------- Navbar ---------- */
+/* Light Mode Navbar */
 .navbar {
   position: fixed;
-  top: 0; left: 0;
+  top: 0; 
+  left: 0;
   width: 100%;
-  background: black;
+  background: #ffffff;   /* white background */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,34 +56,64 @@ body {
   z-index: 1000;
 }
 
-.logo { font-size: 22px; font-weight: bold; }
+/* Dark Mode Navbar with Gradient Separator */
+.dark-mode .navbar {
+  background: linear-gradient(to bottom, #000000 92%, #1a1a1a 100%);
+  box-shadow: 0 2px 5px rgba(255,255,255,0.05); /* subtle glow */
+}
+
+.trending-container {
+  display: flex;
+  justify-content: center;     /* Center horizontally */
+  align-items: center;         /* Center vertically */
+  height: 60px;               /* Adjust height as needed */
+  background: linear-gradient(90deg, #e84393 0%, #000000 100%);
+  border-radius: 20px;         /* Optional: rounded corners */
+  margin: 10px auto;           /* Center container on page */
+  max-width: 800px;            /* Optional: max width */
+}
+
+.trending-title {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+
+.logo { 
+  font-size: 22px; 
+  font-weight: bold; 
+}
 
 .menu, .icons {
   display: flex;
   gap: 30px;
-  margin: 0; padding: 0;
+  margin: 0; 
+  padding: 0;
   list-style: none;
   align-items: center;
 }
 
 .menu li, .icons i, .icons span, .dropbtn {
-  color: white;
+  color: var(--text);
+  background: transparent;
+  box-shadow: none;
   cursor: pointer;
   font-size: 18px;
   transition: color 0.3s;
 }
 
 .menu li:hover, .icons i:hover, .icons span:hover, .dropbtn:hover, .menu a:hover {
-  color: #d02265;
+  color: var(--accent);
 }
 
-.menu a { text-decoration: none; color: inherit; }
-
-/* Slider */
+/* ---------- Slider ---------- */
 .slider-container {
   position: relative;
-  max-width: 90%;
-  margin: 100px auto 40px;
+  max-width: 95%;
+  margin: 5px auto 40px; /* increased top margin to avoid navbar overlap */
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
@@ -55,7 +122,6 @@ body {
 .slider {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  background: white;
 }
 
 .slider img {
@@ -66,8 +132,9 @@ body {
 }
 
 .nav-btn {
-  position: absolute;
-  top: 50%; transform: translateY(-50%);
+  position: absolute;   /* instead of fixed */
+  top: 50%; 
+  transform: translateY(-50%);
   background: rgba(255,255,255,0.7);
   border: none;
   padding: 12px 18px;
@@ -77,40 +144,53 @@ body {
   transition: background 0.3s;
   z-index: 10;
 }
-.nav-btn:hover { background: rgba(18,0,0,0.8); }
+
+.nav-btn:hover { 
+  background: rgba(0,0,0,0.8); 
+}
+
 .prev { left: 15px; }
 .next { right: 15px; }
 
-
-/* Minimal Compact Header */
-.header-section {
-  background: #131212;          
-  color: #be1515;   
-  display: flex;
-  align-items: center;       
-  justify-content: flex-start; 
+.slider-container {
+  position: relative; /* needed so nav-btn is positioned relative to slider */
 }
 
-/* Title */
+
+/* ---------- Body Padding ---------- */
+body {
+  margin: 0;
+  padding-top: 80px; /* adjust to navbar height so content doesn't hide */
+}
+
+
+/* ---------- Compact Header ---------- */
+.header-section {
+  background: var(--surface);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 .header-section h1 {
-  font-size: 2.8rem;         
+  font-size: 2.8rem;
   font-weight: 700;
-  color: #d02265;            
+  color: var(--accent);
   margin: 0;
 }
 
-/* Card Slider */
+/* ---------- Card Slider ---------- */
 .card-slider-container {
   position: relative;
   margin: 60px auto 0;
   padding: 0px 0;
-  background: #f7f7fa;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 520px;
   width: 100vw;
   overflow: hidden;
+  background: var(--surface);
 }
 .card-slider {
   display: flex;
@@ -119,7 +199,7 @@ body {
 }
 .card {
   min-width: 350px; max-width: 350px; height: 500px;
-  background: #fff;
+  background: var(--surface);
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0,0,0,0.15);
@@ -135,7 +215,7 @@ body {
 }
 .card img {
   width: 100%; height: 70%;
-  object-fit: fill;
+  object-fit: cover;
   border-radius: 24px 24px 0 0;
 }
 .card-content {
@@ -145,103 +225,132 @@ body {
   bottom: 0; width: 100%;
 }
 .card-content h3 { color: #fff; margin: 0 0 12px; font-size: 1.4rem; }
-.explore-btn {
-  background: #b71c1c; color: #fff;
-  border: none; border-radius: 20px;
-  padding: 8px 24px; font-weight: bold;
-  cursor: pointer; transition: background 0.3s;
-}
-.card:hover .explore-btn, .explore-btn:hover { background: #d02265; }
-.card-nav {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  font-size: 36px; color: #333;
-  background: rgba(255,255,255,0.8);
-  border: none; cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 50%;
-  z-index: 2;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.card-nav.prev { left: 10px; }
-.card-nav.next { right: 10px; }
 
-/* Responsive */
-@media (max-width: 1200px) {
-  .card-slider-container { min-height: 420px; }
-  .card { min-width: 260px; max-width: 260px; height: 350px; }
-  .card:hover { min-width: 280px; max-width: 280px; }
+/* ---------- Buttons ---------- */
+button, .explore-btn, .read-more-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
 }
-@media (max-width: 700px) {
-  .card-slider-container { min-height: 320px; padding: 20px 0; }
-  .card { min-width: 180px; max-width: 180px; height: 220px; }
-  .card:hover { min-width: 200px; max-width: 200px; }
-  .card-content h3 { font-size: 1rem; }
-  .explore-btn { padding: 6px 14px; font-size: 0.9rem; }
+button:hover, .explore-btn:hover, .read-more-btn:hover {
+  background: #b01550;
 }
 
-/* Extra Sections */
+/* ---------- Dark Mode Special ---------- */
+.dark-mode .card {
+  background: linear-gradient(160deg, #000000 60%, #d02265 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+.dark-mode .card h3, .dark-mode .card p { color: #ffffff; }
+.dark-mode input, .dark-mode select, .dark-mode textarea {
+  background: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #d02265;
+}
+
+/* ---------- Extra Sections ---------- */
 .kerala-intro {
-  padding: 50px 20px;
-  background: #f9f9f9;
-  color: #333;
+  padding: 50px 40px;
+  background: #000;                  /* True black background */
+  color: var(--text);                /* Preserves your variable for text */
+  max-width: 1200px;                  /* Less wide, adjust as needed */
+  margin: 48px auto 0 auto;          /* Centered on the page */
+  border-radius: 32px;               /* Very rounded corners */
+  box-shadow: 0 8px 32px rgba(255,108,165,0.18);
 }
-.kerala-intro .container { max-width: 1000px; margin: auto; }
-.kerala-intro h2, .kerala-intro h3 { color: #d02265; }
+
+.kerala-intro h2, .kerala-intro h3 {
+  color: var(--accent);
+}
+
 .kerala-intro h2 {
   text-align: center;
   margin-bottom: 30px;
   font-size: 2.5rem;
 }
-.kerala-intro p { line-height: 1.8; margin-bottom: 20px; text-align: justify; }
 
-.read-more-btn {
-  display: block; margin: 20px auto 0;
-  padding: 10px 25px;
-  background: #d02265; color: white;
-  border: none; border-radius: 8px;
-  cursor: pointer; font-size: 1rem;
-  transition: background 0.3s;
+.kerala-intro p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
 }
-.read-more-btn:hover { background: #f9bfd5; }
 
-/* Bottom Menu */
+
+/* ---------- Bottom Menu ---------- */
 .bottom-menu {
   position: fixed; bottom: 15px; left: 50%;
   transform: translateX(-50%);
   display: flex; gap: 25px; font-size: 14px;
 }
 .bottom-menu span { cursor: pointer; transition: color 0.3s; }
-.bottom-menu span:hover { color: #d02265; }
+.bottom-menu span:hover { color: var(--accent); }
 
-/* Language Dropdown */
+/* ---------- Language Dropdown ---------- */
 .language-dropdown { position: relative; display: inline-block; }
 .dropdown-content {
   display: none;
   position: absolute;
-  background: white;
+  background: var(--surface);
   min-width: 160px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 6px;
 }
 .dropdown-content a {
-  color: black;
+  color: var(--text);
   padding: 10px 14px;
   text-decoration: none;
   display: block;
   transition: 0.3s;
 }
-.dropdown-content a:hover { background: #f1f1f1; color: #d02265; }
+.dropdown-content a:hover { background: var(--surface-2); color: var(--accent); }
 .language-dropdown:hover .dropdown-content { display: block; }
 .dropbtn {
   background: none;
   border: none;
   font-size: 18px;
-  color: white;
+  color: var(--text);
   cursor: pointer;
 }
-.fa-bars {
-  color: white ;
-  font-size: 24px ;
-  display: inline-block ;
+.fa-bars { font-size: 24px; color: var(--text); }
+
+/* ---------- Inputs ---------- */
+input, select, textarea {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--accent);
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+/* ---------- Toggle Button ---------- */
+.theme-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--text);
+  padding: 6px;
+}
+.destination-page {
+  background: var(--bg); /* ✅ changes with dark mode */
+  color: var(--text);
+}
+
+.destination-card {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* ---------- Dark Theme Navbar ---------- */
+body.dark .navbar {
+  background: #000000; /* solid black background */
+  border-bottom: none; /* remove solid border */
+  background-image: linear-gradient(to bottom, #000000 95%, #1a1a1a 100%);
+  /* This creates a soft grayish separation at the bottom */
 }

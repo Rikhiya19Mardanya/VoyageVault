@@ -83,3 +83,30 @@ function changeLanguage(lang) {
     selectField.dispatchEvent(new Event("change"));
   }
 }
+
+(function () {
+  // Apply theme + switch icon
+  function applyTheme(theme) {
+    const dark = theme === 'dark';
+    document.documentElement.classList.toggle('dark-mode', dark);
+    const icon = document.getElementById('theme-icon');
+    if (icon) icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  }
+
+  // On first load: read saved theme (default light)
+  const saved = localStorage.getItem('theme') || 'light';
+  applyTheme(saved);
+
+  // Wire up the button once DOM is ready
+  document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return; // ID mismatch or button not on this page
+
+    btn.addEventListener('click', function () {
+      const isDark = document.documentElement.classList.contains('dark-mode');
+      const next = isDark ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    });
+  });
+})();
