@@ -25,6 +25,13 @@
     </nav>
     <div class="icons">
 
+
+<!-- Dark/Light mode toggle button -->
+<button id="theme-toggle" class="theme-btn">
+  <i id="theme-icon" class="fas fa-moon"></i>
+</button>
+
+
     <!-- Language Dropdown -->
     <div class="language-dropdown">
       <i class="fa-solid fa-globe"></i> 
@@ -63,60 +70,61 @@
     <button class="nav-btn prev" onclick="prevSlide()">&#8249;</button>
     <button class="nav-btn next" onclick="nextSlide()">&#8250;</button>
   </div>
-  <!-- header -->
-  <section class="header-section">
-  <h1>Trending locations in kerala</h1>
-</section>
+
+  <div class="trending-container">
+  <h1 class="trending-title">Trending locations in kerala</h1>
+</div>
+
 
   <!-- Card Slider Section -->
   <div class="card-slider-container">
     <div class="card-slider" id="card-slider">
       <div class="card">
-        <img src="images/golden-temple.jpg" alt="The Golden Temple">
+        <img src="card images\kovalam.webp" alt="Kovalam">
         <div class="card-content">
-          <h3>The Golden Temple</h3>
+          <h3>Kovalam</h3>
           <button class="explore-btn">Explore</button>
         </div>
       </div>
       <div class="card">
-        <img src="images/shanti-stupa.jpg" alt="Shanti Stupa">
+        <img src="card images\Painavu.jpg" alt="Painavu">
         <div class="card-content">
-          <h3>Shanti Stupa</h3>
+          <h3>Painavu</h3>
           <button class="explore-btn">Explore</button>
         </div>
       </div>
       <div class="card">
-        <img src="images/tulip-garden.jpg" alt="Tulip Garden">
+        <img src="card images\Kollam-Kerala.jpg" alt="Kollam-Kerala">
         <div class="card-content">
-          <h3>Tulip Garden</h3>
+          <h3>Kollam</h3>
           <button class="explore-btn">Explore</button>
         </div>
       </div>
       <div class="card">
-        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <img src="card images\Malakkappara-Kerala.jpg" alt="Malakkappara-Kerala">
         <div class="card-content">
-          <h3>Rohtang Pass</h3>
+          <h3>Malakkappara</h3>
           <button class="explore-btn">Explore</button>
         </div>
       </div>
        <div class="card">
-        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <img src="card images/Peermade-Kerala.jpg" alt="Peermade-Kerala">
         <div class="card-content">
-          <h3>Rohtang Pass</h3>
+          <h3>Peermade</h3>
           <button class="explore-btn">Explore</button>
         </div>
       </div>
        <div class="card">
-        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <img src="images/Painavu.jpg" alt="Painavu">
         <div class="card-content">
-          <h3>Rohtang Pass</h3>
+          <h3>Painavu</h3>
           <button class="explore-btn">Explore</button>
         </div>
       </div>
        <div class="card">
-        <img src="images/rohtang-pass.jpg" alt="Rohtang Pass">
+        <img src="images/Peermade-Kerala.jpg" alt="Peermade-Kerala">
         <div class="card-content">
-          <h3>Rohtang Pass</h3>
+          <h3>Peermade</h3>
           <button class="explore-btn">Explore</button>
         </div>
       </div>
@@ -146,7 +154,7 @@
     <button class="card-nav next" onclick="nextCard()">&#8250;</button>
   </div>
 
-  <!-- Kerala Content Section -->
+<!-- Kerala Content Section -->
   <section class="kerala-intro">
     <div class="container">
       <h2>Kerala's Timeless Beauty and Cultural Riches</h2>
@@ -156,39 +164,62 @@
       <div id="kerala-full" style="display: none;">
         <h3>Kerala's Historical Marvels</h3>
         <p>
-          Delve into the historical wonders of Kerala, including the grandeur of the Mattancherry Palace, Shakthan Thampuran Palace, Bolgatty Palace, Palakkad Fort, Thalassery Fort, Bekal Fort, and Fort Kochi, each standing as a testament to the region's splendid past. In the heart of Kochi, the Kerala Folklore Museum showcases a rich tapestry of the state's cultural, artistic, and architectural heritage...
+         Delve into the historical wonders of Kerala, including the grandeur of the Mattancherry Palace, Shakthan Thampuran Palace, Bolgatty Palace, Palakkad Fort, Thalassery Fort, Bekal Fort, and Fort Kochi, each standing as a testament to the region's splendid past. In the heart of Kochi, the Kerala Folklore Museum showcases a rich tapestry of the state's cultural, artistic, and architectural heritage, offering a captivating glimpse into the cultural legacy of Kerala. Kollam, formerly recognized as Quilon, stands as an ancient port city on the scenic Malabar Coast reflects rich history intertwined with the legacies of the Phoenicians, Romans, Arabs, and Chinese. Kollam has thrived as a cultural crossroads and a flourishing trade hub for numerous centuries. Now transformed into a luxurious hotel, the Halcyon Castle in the beach town of Kovalam, was originally constructed in 1932 as a summer escape for the regent queen of Travancore, Maharani Sethu Lakshmi Bayi
+        </p>
+        <p>
+          In the historic district of Mattancherry in Kochi, the Paradesi Synagogue, also known as the Jewish Synagogue or Mattancherry Synagogue, has stood since 1568 as a significant cultural and historical landmark. Kerala is also home to Karumadikkuttan, a site of historical importance showcasing a striking black granite statue of Lord Buddha, believed to have origins dating back to the 9th or 10th century. Embark on a journey through time as you explore numerous other heritage sites, including forts, palaces, and museums, each narrating the intriguing stories of Kerala's illustrious history
         </p>
         <h3>A Paradise for Nature Lovers</h3>
         <p>
-          Kerala's lush landscapes invites you to explore its mesmerising beauty, visit Munnar, an idyllic destination to immerse in the region's natural allure. Amidst majestic mountains and evergreen forests...
+          Kerala's lush landscapes invites you to explore its mesmerising beauty, visit Munnar, an idyllic destination to immerse in the region's natural allure. Amidst majestic mountains and evergreen forests, Munnar stands as a coveted haven for travellers seeking solace in nature's embrace. The refreshing mountain breeze, serene valleys, and awe-inspiring vistas seamlessly weave a paradise for nature enthusiasts. Enveloped in mist throughout the year, this enchanting hill station sits approximately 1600 meters above sea level, offering a serene retreat from the bustle of daily life.
         </p>
-        <h3>Go on a Spiritual Journey Through Kerala</h3>
         <p>
-          Kerala houses a multitude of revered religious sites that draw devotees from various faiths and backgrounds. In the district of Thrissur, the town of Guruvayoor is renowned for its illustrious Guruvayoor Temple...
+          Kerala's captivating beaches have long been a draw for both locals and tourists, providing a tranquil escape by the soothing waters. Among the many coastal gems, Kizhunna, Aadi Kadalai, Kappil, and Payyambalam beaches are a testament to the state's coastal charm. Furthermore, Kerala's proximity to the Western Ghats and its sprawling forests has gifted the region with various breathtaking waterfalls, including the captivating wonders of Palaruvi, Lakkam, Vazhachal, Tusharagiri, and Athirappilly waterfalls.
+        </p>        <h3>Go on a Spiritual Journey Through Kerala</h3>
+        <p>
+          Kerala houses a multitude of revered religious sites that draw devotees from various faiths and backgrounds. In the district of Thrissur, the town of Guruvayoor is renowned for its illustrious Guruvayoor Temple, a revered abode of Lord Krishna and the third largest temple in India. The Ayyappa temple in Sabarimala, welcoming over 30 million pilgrims annually, stands as the largest in India and the second largest in the world, imbuing the region with a deep spiritual significance. In the southern realms of Kerala, the town of Pathanamthitta exudes an aura of spirituality and ancient mysticism, boasting several revered temples and serving as a key pilgrimage hub, notably as the home of the famed Sabarimala temple.
+        </p>
+        <p>
+          The Padmanabhaswamy Temple, located in the heart of Trivandrum, captivates visitors with its unique blend of Keralan and Dravidian architectural styles, standing as a must-visit religious landmark in the region. The quaint coastal town of Kasargod presents a delightful convergence of diverse religions, cultures, and the bounties of nature, offering a unique glimpse into Kerala's culture. Meanwhile, the hill-town of Malappuram is celebrated for its ancient temples and the historic Malappuram Juma Masjid, one of the oldest mosques in Kerala, adding to the region's spiritual richness and historical significance.
         </p>
         <h3>Art Forms Reflecting Rich Culture</h3>
         <p>
-          You are in for a memorable treat if you’re an art lover, as Kerala is renowned for its vibrant artistic expressions. Its art and cultural forms encompass classical performances, age-old rituals, religious expressions, enchanting folk tales, and martial arts...
+          You are in for a memorable treat if you’re an art lover, as Kerala is renowned for its vibrant artistic expressions. Its art and cultural forms encompass classical performances, age-old rituals, religious expressions, enchanting folk tales, and martial arts. The ancient Indian martial art of Kalaripayattu is deeply rooted in the region's cultural legacy. The classical art form of Kathakali, celebrated globally for its grandeur, was born on Kerala's shores over three centuries ago, and is a must-see experience. Delight in the mesmerising spectacle of Theyyam, a ritual art form that captivates with its grandeur and spiritual fervour. Mohiniyattam, a captivating classical dance form, traditionally performed by temple dancers, took inspiration from Lord Vishnu's transformation into the enchantress Mohini to secure the elixir of life during a battle with demons!
+        </p>
+        <p>
+          The folk dances of Kerala are a sight to behold. From the spirited Kaikotti Kali dance and the traditional Kuthiyottam dance to the graceful Thiruvathirakali Dance and the energetic Thirayattam dance, each performance is a celebration of tradition and devotion. The enchanting Kanniyar Kali, a reverent dance dedicated to Goddess Bhagvaty, stands as one of the oldest folk dances in the region, characterised by its fast-paced movements set to rhythmic devotional tunes.
+        </p>
+        <p>
+          From exquisite Chinese ceramics and brass-inlay crafts to intricate creations such as caskets, teapots, tin candle stands, bells, and lamps. The local jewellery in Kerala boasts a distinctive allure, characterised by intricate designs and the opulence of gold, showcasing the region's rich craftsmanship.
         </p>
         <h3>Charismatic Cuisine of Kerala</h3>
         <p>
-          Kerala's culinary delights offer a rich array of both vegetarian and non-vegetarian dishes, featuring an exquisite blend of fish, meat, poultry, and rice preparations...
+          Kerala's culinary delights offer a rich array of both vegetarian and non-vegetarian dishes, featuring an exquisite blend of fish, meat, poultry, and rice preparations. The cuisine is renowned for its aromatic medley of spices, with the generous use of coconut oil and milk, a result of the region's abundant coconut cultivation. A quintessential highlight is the Kerala Sadya, a lavish banquet meal prepared during festivals and special occasions, showcasing the vibrant flavours and culinary expertise of the region. The menu boasts a variety of rice-based delicacies such as idli and dosa, crafted from a fine rice batter, while the tantalizing use of chillies, curry leaves, mustard seeds, turmeric powder, and asafoetida adds depth and character to the dishes
         </p>
+    
         <h3>Kerala's Festive Kaleidoscope</h3>
         <p>
-          Kerala, being called the God’s Own Country, celebrates several important and fascinating festivals. Onam, a vibrant 10-day harvest festival, unfolds during August-September...
+        Kerala being called as the god’s own country, celebrates several important and fascinating festivals. Onam, a vibrant 10-day harvest festival, unfolds during August-September, enveloping the state in a celebration of culture. The festivities are marked by lively fairs and engaging contests, inviting people to immerse themselves in the rich traditions and vibrant spirit of the occasion. The pinnacle of Onam, the tenth day, is hailed as the most significant, radiating the essence of Kerala's cultural splendour.
+        </p>
+        <p>
+          Vishu, the New Year for the people of Kerala, dawns in the month of Medam, typically falling in April. This auspicious occasion marks the beginning of a fresh cycle, brimming with hope and renewal. Furthermore, the exhilarating Thrissur Pooram, celebrated during the month of Medam in which the spirited competition between the traditional groups of Thiruvambai and Paramekkavu is highlighted by a stunning display of decorated elephants, resplendent in ornate garments and majestic umbrellas.
         </p>
       </div>
       <button id="read-more-btn" class="read-more-btn" onclick="toggleReadMore()">Read More</button>
     </div>
 
-  <section id="about" style="padding: 2rem; background: #f9f9f9;">
-  <h2>About VoyageVault</h2>
-  <p>
-    VoyageVault is your trusted travel companion, offering curated accommodations, travel tips, and seamless booking experiences. 
-    Our mission is to make your journeys memorable and hassle-free.
-  </p>
+
+
 </section>
 <script src="script.js"></script>
 </body>
 </html>
+  <footer class="footer">
+  <div class="footer-content">
+    <h2>About VoyageVault</h2>
+    <p>
+      VoyageVault is your trusted travel companion, offering curated accommodations, travel tips, and seamless booking experiences.
+      Our mission is to make your journeys memorable and hassle-free.
+    </p>
+  </div>
+</footer>
